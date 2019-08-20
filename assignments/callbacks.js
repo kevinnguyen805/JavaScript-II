@@ -102,8 +102,25 @@ console.log(kevin);
 
 /* STRETCH PROBLEM */
 
-function removeDuplicates(array, cb) {
+const removeDuplicates = function(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  return cb(array);
 }
+
+const arrayUnique = function (arr) {
+  return arr.filter(function (item, index) {
+    return arr.indexOf(item) === index;
+  })
+}
+
+var uniqueItems = removeDuplicates(items, arrayUnique);
+
+console.log(uniqueItems);
+
+
+// stretch using 'set'
+// const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum', 'Gum', 'Pencil'];
+// let unique = [...new Set(items)];
+// console.log(unique);
