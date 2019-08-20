@@ -55,31 +55,72 @@ const runners = [
   { id: 50, first_name: "Shell", last_name: "Baine", email: "sbaine1d@intel.com", shirt_size: "M", company_name: "Gabtype", donation: 171 },
 ];
 
+
+
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
 let fullNames = [];
+runners.forEach(function(bibs){
+  return fullNames.push(`${bibs.first_name} ${bibs.last_name}`);
+})
 console.log(fullNames);
+
+
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
 let firstNamesAllCaps = [];
+runners.map(function (name) {
+  return firstNamesAllCaps.push(name.first_name.toUpperCase());
+})
 console.log(firstNamesAllCaps);
+
+
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 let runnersLargeSizeShirt = [];
+runners.filter(function (size) {
+  if (size.shirt_size === "L") {
+    runnersLargeSizeShirt.push(size);
+  }
+})
 console.log(runnersLargeSizeShirt);
+
+
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
-let ticketPriceTotal = 0;
+let ticketPriceTotal = runners.reduce(function (accumulator, currentValue) {
+  return accumulator + currentValue.donation;
+}, 0)
 console.log(ticketPriceTotal);
+
+
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// Problem 1 .map() - The bibs must be changed to LAST_NAME, COMPANY 
+const newBibs = runners.map(function (bibChange) {
+  return `${bibChange.last_name.toUpperCase()}, ${bibChange.company_name.toUpperCase()}.CO`;
+})
+console.log(newBibs);
 
-// Problem 2
 
-// Problem 3
+// Problem 2 .filter() - Filter the top donators who have donated over 200 -> then find the #1 donator
+const topDonators = runners.filter(function (donate) {
+  return donate.donation >= 200;
+})
+console.log(topDonators);
+const numOneDonator = topDonators.sort(function (a, b) {
+  return b.donation - a.donation;
+});
+console.log(numOneDonator);
+
+
+// Problem 3 .reduce() - Find the average of donations 
+const avgDonations = runners.reduce(function (accumulator, currentValue) {
+  return accumulator + currentValue.donation;
+}, 0) / runners.length;
+console.log(avgDonations);
