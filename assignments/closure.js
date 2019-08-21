@@ -4,6 +4,35 @@
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
 
+function rock(rockBand){
+  const song1 = "Highway to Hell";
+  console.log(`I love ${song1} by ${rockBand}`);
+
+  function indie(indieRockBand){
+    const song2 = "You Only Live Once";
+    console.log(`I love ${song2} by ${indieRockBand} more than ${song1}`);
+
+    function psychadelic(psychRockBand){
+      const song3 = "Let it happen";
+      console.log(`I love ${song3} by ${psychRockBand} more than ${song2}`);
+
+      function punk(punkRockBand){
+        const song4 = "Cheap Beer";
+        console.log(`I love ${song4} by ${punkRockBand} more than ${song3}`);
+      }
+      return punk('FIDLAR');                  
+    }
+    return psychadelic('Tame Impala');
+  }
+  return indie('The Strokes');                            // remember to give inner function parameters VALUES so data is passed back
+}
+
+console.log(rock('AC/DC'));
+
+
+
+
+
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
